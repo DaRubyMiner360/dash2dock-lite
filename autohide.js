@@ -37,6 +37,9 @@ var AutoHide = class {
     this._shown = true;
     this._dwell = 0;
 
+    Main.overview.connect('showing', () => this._checkHide());
+    Main.overview.connect('hiding', () => this._checkHide());
+
     this._debounceCheckHide();
 
     this.extension._loTimer.runSequence([
@@ -312,6 +315,10 @@ var AutoHide = class {
     let dash_position = this.dashContainer._fixedPosition;
 
     if (this.dashContainer._disableAutohide) {
+      return false;
+    }
+
+    if (Main.overview != null && Main.overview.visibleTarget) {
       return false;
     }
 
