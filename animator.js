@@ -531,7 +531,7 @@ var Animator = class {
 
         this.dashContainer.dash.x =
           width / 2 -
-          ((this._iconsCount + 1) * anim.iconSpacing * scaleFactor) / 2;
+          ((this._iconsCount + 0.5) * anim.iconSpacing * scaleFactor) / 2;
         if (this.extension._vertical) {
           this.dashContainer.dash.style = `padding-bottom: ${
             padEnd + anim.padRight
@@ -952,7 +952,7 @@ var Animator = class {
     let pad = 0;
     let x1 = this._dockExtension.x;
     let y1 = this._dockExtension.y;
-    let x2 = this.dashContainer.x + this.dashContainer.width;
+    let x2 = this._dockExtension.x + this._dockExtension.width;
     let y2 = this.dashContainer.y + this.dashContainer.height;
     if (this.extension._vertical) {
       x1 = this.dashContainer.x;
